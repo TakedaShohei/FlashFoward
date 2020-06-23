@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [SerializeField] Transform self_trans;
     public float run_speed = 5.0f;
 
     [SerializeField] float run_max_ = 20.0f;
@@ -39,6 +39,62 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checking Status1　When　Step is NONE.
+        if(next_step == STEP.NONE)
+        {
+            switch (step) {
+                case STEP.RUN:
+                    {
+                        if (!is_running)
+                        {
+                            if(run_speed<= 0)
+                            {
+                                next_step = STEP.STOP;
+                            }
+                        }
+                    }
+                break;
+
+                case STEP.MISS:
+                    {
+                        if (is_contact_floor)
+                        {
+                            next_step = STEP.RUN;
+                        }
+                    }
+                break;
+            }
+            
+        }
+
+        //Checking Status2　When　Step is not NONE.
+        if(next_step != STEP.NONE)
+        {
+            switch (next_step) {
+
+                case STEP.STOP:
+                    {
+
+                    }
+                    break;
+
+                case STEP.MISS:
+                    {
+                        Vector3 velocity_ = this.GetComponent<Rigidbody>().velocity;
+                        velocity_.x = -2.5f;
+                        this.GetComponent<Rigidbody>().velocity = velocity_;
+
+                    }
+                    break;
+
+
+
+
+            }
+
+        }
 
     }
+
+
 }
