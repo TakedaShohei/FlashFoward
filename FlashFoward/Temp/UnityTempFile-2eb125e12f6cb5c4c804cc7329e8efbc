@@ -284,3 +284,5 @@
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
 Assets\Resources\Scripts\CameraControl.cs
+Assets\Resources\Scripts\PlayerController.cs
+Assets\Resources\Scripts\SceneControl.cs

@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
 
     protected const float run_add_ = 5.0f;
 
+    protected bool is_running = true;
+    protected bool is_contact_floor = false;
+    protected bool is_playable = true;
+
     public enum STEP
     {
 
